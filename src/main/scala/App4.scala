@@ -5,12 +5,12 @@ import com.typesafe.scalalogging.LazyLogging
 object App4 extends App with LazyLogging {
 
 
-  val negate_1: Boolean => (Boolean, String) = { (x: Boolean) =>
-    (!x, s"negate_1 called with ${x}\n")
+  val simple_1: Boolean => (Boolean, String) = { (x: Boolean) =>
+    (!x, s"simple_1 called with ${x}\n")
   }
 
-  val negate_2: Boolean => (Boolean, String) = { (x: Boolean) =>
-    (!x, s"negate_2 called with ${x}\n")
+  val simple_2: Boolean => (Boolean, String) = { (x: Boolean) =>
+    (!x, s"simple_2 called with ${x}\n")
   }
 
   //we will create a function to compose which takes two functions which are composable
@@ -35,7 +35,7 @@ object App4 extends App with LazyLogging {
     }
   }
 
-  def composed: Boolean => (Boolean, String) = composeT(negate_1, negate_2)
+  def composed: Boolean => (Boolean, String) = composeT(simple_1, simple_2)
 
   logger.info(s"Result: ${composed.apply(true)}")
 
